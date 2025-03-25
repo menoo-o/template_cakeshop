@@ -1,14 +1,14 @@
-import { login, signup } from './actions'
+import { redirect } from "next/navigation";
+import { createClient } from "@/utils/supabase/server"; 
+import LoginForm from "./LoginForm"; // Import Client Component
 
-export default function LoginPage() {
-  return (
-    <form>
-      <label htmlFor="email">Email:</label>
-      <input id="email" name="email" type="email" required />
-      <label htmlFor="password">Password:</label>
-      <input id="password" name="password" type="password" required />
-      <button formAction={login}>Log in</button>
-      <button formAction={signup}>Sign up</button>
-    </form>
-  )
+export default async function LoginPage() {
+  const supabase = await createClient();
+  const { data } = await supabase.auth.getUser();
+
+  if (data?.user) {
+    redirect("/private"); // Redirect logged-in users
+  }
+
+  return <LoginForm />; // Render Client Component
 }
