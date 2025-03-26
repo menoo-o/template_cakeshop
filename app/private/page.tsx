@@ -1,26 +1,20 @@
-
-import { redirect } from 'next/navigation'
-import { signOut } from './action';
-import { createClient } from '@/utils/supabase/server'
+import LogoutButton from "./LogoutButton";
+import { createClient } from "@/utils/supabase/server";
+import { redirect } from "next/navigation";
 
 export default async function PrivatePage() {
-  const supabase = await createClient()
- 
+  const supabase = await createClient();
+  const { data, error } = await supabase.auth.getUser();
 
-  const { data, error } = await supabase.auth.getUser()
   if (error || !data?.user) {
-    redirect('/login')
+    redirect("/login");
   }
 
   return (
     <>
       <p>Hello {data.user.email}</p>
       <br /><br />
-      <form action={signOut}>
-        <button type="submit">Sign Out</button>
-      </form>
+      <LogoutButton /> {/* Client Component */}
     </>
-  
-  )
+  );
 }
-
