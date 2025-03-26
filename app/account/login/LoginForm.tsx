@@ -32,7 +32,10 @@ export default function LoginForm() {
 
           {state.error && <p style={{ color: "red" }}> {state.error} </p>}
 
-          <Link href="/register">Dont have an account? Sign Up Here!</Link>
+          <Link href="/account/signup">Dont have an account? Sign Up Here!</Link>
+          <br /><br />
+          <Link href="/account/reset-password">Forgot Password?</Link>
+
       </form>
     </>
   );

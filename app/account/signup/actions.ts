@@ -5,6 +5,7 @@ import { RegisterState } from "@/lib/types/types";
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 
+// Signup action function
 export async function register( prevState: RegisterState,  formData: FormData): Promise<RegisterState> {
   const supabase = await createClient();
 
@@ -23,5 +24,5 @@ export async function register( prevState: RegisterState,  formData: FormData): 
     return { error: error.message }; // Return error back to UI
   }
 
-  redirect("/private"); // Redirect on success
+  redirect("/account/login"); // Redirect on success
 }

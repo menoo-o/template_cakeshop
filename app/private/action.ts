@@ -12,5 +12,5 @@ export async function signOut() {
     return;
   }
 
-  redirect("/login");
+  redirect("/account/login");
 }

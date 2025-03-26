@@ -6,7 +6,7 @@ import { useActionState } from "react";
 import { register } from "./actions";
 import Link from "next/link";
 
-export default function RegisterForm() {
+export default function SignUpForm() {
   const initialState: RegisterState = { error: null };
 
   const [state, formAction, isPending] = useActionState(register, initialState);
@@ -18,8 +18,8 @@ export default function RegisterForm() {
       <form action={formAction}>
 
          <label htmlFor="firstname">FirstName:</label>
-        <input id="firstname" name="firstname" type="text" required />
-        <br /> <br />
+         <input id="firstname" name="firstname" type="text" required />
+         <br /> <br />
 
         <label htmlFor="lastname">LastName:</label>
         <input id="lastname" name="lastname" type="text" required />
@@ -41,8 +41,8 @@ export default function RegisterForm() {
 
         {state.error && <p style={{ color: "red" }}>{state.error}</p>}
 
-        <Link href="/login">Already have an account? Log in here!</Link>
-    </form>
+        <Link href="/account/login">Already have an account? Log in here!</Link>
+      </form>
     </>
   );
 }

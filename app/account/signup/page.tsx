@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server"; 
-import RegisterForm from "./RegisterForm"; // Client Component
+import SignUpForm from "./SignUpForm"; // Client Component
 import './styles.css'
 
 export default async function RegisterPage() {
@@ -10,6 +10,6 @@ export default async function RegisterPage() {
   if (data?.user) {
     redirect("/private"); // Redirect if already logged in
   }
-
-  return <RegisterForm />;
+ 
+  return <SignUpForm />;
 }
