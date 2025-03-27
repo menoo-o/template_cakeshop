@@ -7,7 +7,7 @@ export async function updatePassword(code: string | null, newPassword: string) {
   if (!code) return { error: "Invalid or missing code." };
 
   // Supabase needs the code to update the password
-  const { data, error } = await supabase.auth.exchangeCodeForSession(code);
+  const { error } = await supabase.auth.exchangeCodeForSession(code);
 
   if (error) return { error: "Failed to validate reset token." };
 

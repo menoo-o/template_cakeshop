@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { updatePassword } from "./actions";
+
 
 export default function UpdatePasswordPage() {
   const searchParams = useSearchParams();
@@ -9,6 +10,7 @@ export default function UpdatePasswordPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
+  const router = useRouter();
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -22,6 +24,7 @@ export default function UpdatePasswordPage() {
       setMessage("Error: " + error);
     } else {
       setMessage("Password updated! You can now login.");
+      
     }
   }
 
@@ -43,7 +46,7 @@ export default function UpdatePasswordPage() {
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
-        <button type="submit">Update Password</button>
+        <button type="submit" onClick={() => router.push('/private')}>Update Password</button>
       </form>
       <p>{message}</p>
     </div>

@@ -19,6 +19,7 @@ export default function ResetPasswordPage() {
   return (
     <div>
       <h2>Reset Your Password</h2>
+      
       <form onSubmit={handleSubmit}>
         <input
           type="email"
